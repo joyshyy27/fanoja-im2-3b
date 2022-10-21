@@ -1,38 +1,42 @@
 <?php
     require_once "dbconnect.php";
 ?>
-<link rel="stylesheet" href="style.css">
 
- <table>
-    <tr>
+<style>
+    *{
+        background: #D4BBDD;
+    }
 
-        <th>id</th>
-        <th>Category name</th>
-        <th>Category Status</th>
-        <th>Actions </th>
-    </tr>
+    a{
+        
+        position: absolute;
+        background-color:  #D0AB99;
+        border: 3px solid #FDD1D2;
+        border-collapse: collapse;
+        padding: 10px;
+        width: 30%;
+        left: 50px;
+        top: 100px;
+        color: #FBEDE0;
+        font-style: normal;
+        font-size: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-    <?php
-        $sqlQuery = "SELECT * from category";
-        $res = $conn->query($sqlQuery);
-        while($row =mysqli_fetch_object($res)){
-            ?>
-                <tr>
-                    <td><?php echo $row->id?></td>
-                    <td><?php echo $row->name?></td>
-                    <td><?php echo $row->status?></td>
-                    <td>
+    .cat{
+        left: 34%;
+        top: 30%;
+    }
 
-                    <a class="txtUp" href="addCategory.php?id=<?php echo $row->id?>">Add</a>
-                        
-                    <a class="txtUp" href="updateCategory.php?id=<?php echo $row->id?>">Update</a>
+    .prod{
+        left: 34%;
+        top: 40%;
+    }
+</style>
 
-                    <a class="txtDe" href="deleteCategory.php?id=<?php echo $row->id?>">Delete</a>
-                    
-                </td>
-                </tr>
-        <?php
-            }   
-        ?>
-</table>
-
+<div>
+    <a class = "cat" href = "categoryList.php">Manage Category</a>
+    <br><br><br>
+    <a class = "prod" href = "productList.php">Manage Product</a>
+</div>

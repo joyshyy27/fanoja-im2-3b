@@ -1,40 +1,15 @@
 <?php
-    require_once "dbconnect.php";
-
-    $catID = $_GET['id'];
-
-    // var_dump($catID);
-    $sqlQuery = "SELECT * from category";
-    
-    $res = $conn->query($sqlQuery);
-    $row = $res->fetch_assoc();
-
-
-    if($_POST){
-        var_dump($_POST);
-        $catname = $_POST['name'];
-        $catstatus = $_POST['status'];
-
-        $sqlQuery ="insert category set name = '$catname', status= '$catstatus' where id = $catID";
-
-        $res = $conn->query($sqlQuery);
-
-        if($res)
-        header("Location: index.php");
-    }
+    include "dbconnect.php";
 ?>
 
-<link rel="stylesheet" href="updateCat.css">
+<link rel="stylesheet" href="list.css">
 
-<form action="addCat.php" method="get">
+<div class = "title">Add Category</div>
+<form action="saveCategory.php" method="get">
 
-    <input type="text" placeholder="Enter Category name" 
-    name="name" 
-    value="<?php echo $row['name']?>">
+    <input type="text" placeholder="Enter Category Name" name="name">
     <br>
-    <input type="text" placeholder="Enter category status" 
-    name="status"
-    value="<?php echo $row['status']?>">
+    <input type="text" placeholder="Enter Category Status" name="status">
     <br>
-    <input type="submit">
+    <input type="submit" class = "btn">
 </form>
